@@ -1,17 +1,17 @@
 const stack = [];
 const allFuncs = [];
-const volatileRegs = ['rcx','rdx','r8','r9']; // this is for Win64-FastCall Calling Convention
+const volatileRegs = ['rcx','rdx','r8','r9']; // isso é para convenção de chamada Win64-FastCall
 const strLiteralSection = '';
 const currentFunc = '';
-// List of additional settings coming in the future:
-// setting the mnemonic: AT&T or Intel
-// var mnemonic = 'AT&T';
-// setting the syntax: GCC-OSX, GCC-Linux, MASM, NASM, etc.
-// var syntax = 'GCC-OSX'
-// setting the calling convention: Win64-FastCall, Linux-FastCall, CDECL, etc.
-// var calling_convention = 'Win64-FastCall';
-// setting the mode: 16, 32, 64.
-// var mode = 64.
+// Lista de configurações adicionais que virão no futuro:
+// configurando o mnemônico: AT&T ou Intel
+// const mnemônico = 'AT&T';
+// definindo a sintaxe: GCC-OSX, GCC-Linux, MASM, NASM, etc.
+// const syntax = 'GCC-OSX'
+// definindo a convenção de chamada: Win64-FastCall, Linux-FastCall, CDECL, etc.
+// const Calling_convention = 'Win64-FastCall';
+// definindo o modo: 16, 32, 64.
+// const mode = 64.
 
 const initGenerate = (TheBigAST) => {
   const globalItems = TheBigAST[0];
@@ -27,8 +27,8 @@ const initGenerate = (TheBigAST) => {
   return 0;
 }
 
-function findAllFuncs(funcDefs) {
-  var current = 0;
+const findAllFuncs = (funcDefs) => {
+  const current = 0;
   allFuncs = [];
   while (current < funcDefs.length) {
     allFuncs.push(funcDefs[current].name);
@@ -37,10 +37,10 @@ function findAllFuncs(funcDefs) {
   return allFuncs;
 }
 
-function generateFunctionAssembly(functionBody, functionArgs) {
-  var current = 0;
-  var functionAssembly = "";
-  var ifParts = [];
+const generateFunctionAssembly = (functionBody, functionArgs) => {
+  const current = 0;
+  const functionAssembly = "";
+  const ifParts = [];
   if (functionBody.length !== 1 || functionArgs.length !== 0) {
     functionAssembly += initStack();
   }
