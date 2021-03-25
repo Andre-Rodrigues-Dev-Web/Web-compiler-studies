@@ -1,8 +1,8 @@
-var stack = [];
-var allFuncs = [];
-var volatileRegs = ['rcx','rdx','r8','r9']; // this is for Win64-FastCall Calling Convention
-var strLiteralSection = '';
-var currentFunc = '';
+const stack = [];
+const allFuncs = [];
+const volatileRegs = ['rcx','rdx','r8','r9']; // this is for Win64-FastCall Calling Convention
+const strLiteralSection = '';
+const currentFunc = '';
 // List of additional settings coming in the future:
 // setting the mnemonic: AT&T or Intel
 // var mnemonic = 'AT&T';
@@ -13,16 +13,16 @@ var currentFunc = '';
 // setting the mode: 16, 32, 64.
 // var mode = 64.
 
-function initGenerate(TheBigAST) {
-  var globalItems = TheBigAST[0];
-  var functionBox = TheBigAST[1];
+const initGenerate = (TheBigAST) => {
+  const globalItems = TheBigAST[0];
+  const functionBox = TheBigAST[1];
   allFuncs = findAllFuncs(functionBox[0].body);
   //strLiteralSection = generateStrLiteralSection();
-  var funcsAsm = findFunctionNames(functionBox[0].body);
-  var headers = includeHeaders(globalItems);
-  var dataSection = generateDataSection(globalItems);
-  var textHeader = generateTextHeader(TheBigAST[1]);
-  var compiled = textHeader + funcsAsm + dataSection;
+  const funcsAsm = findFunctionNames(functionBox[0].body);
+  const headers = includeHeaders(globalItems);
+  const dataSection = generateDataSection(globalItems);
+  const textHeader = generateTextHeader(TheBigAST[1]);
+  const compiled = textHeader + funcsAsm + dataSection;
   console.log(compiled);
   return 0;
 }
